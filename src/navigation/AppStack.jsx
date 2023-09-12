@@ -5,14 +5,11 @@ import Icon from 'react-native-vector-icons/Feather';
 
 import AppDraweOptions from './configs/AppDrawerOptions';
 import NewsNavigator from './child-stacks/NewsStack';
+import AboutScreen from '../screens/AboutScreen';
 
-const newsIcon = ({tintColor}) => <Icon name="rss" size={21} color="#144774" />;
-const contactsIcon = ({tintColor}) => (
-  <Icon name="users" size={21} color={tintColor} />
-);
-const aboutIcon = ({tintColor}) => (
-  <Icon name="info" size={22} color={tintColor} />
-);
+const newsIcon = () => <Icon name="rss" size={21} color="#144774" />;
+const contactsIcon = () => <Icon name="users" size={21} />;
+const aboutIcon = () => <Icon name="info" size={22} />;
 const settingsIcon = ({tintColor}) => (
   <Icon name="settings" size={22} color={tintColor} />
 );
@@ -21,11 +18,18 @@ const AppDrawer = createDrawerNavigator();
 
 const AppStack = () => {
   return (
-    <AppDrawer.Navigator options={AppDraweOptions}>
+    <AppDrawer.Navigator
+      // initialRouteName="NewsScreen"
+      screenOptions={AppDraweOptions}>
       <AppDrawer.Screen
         name="News"
         component={NewsNavigator}
-        // options={{drawerIcon: newsIcon, headerShown: false}}
+        options={{drawerIcon: newsIcon}}
+      />
+      <AppDrawer.Screen
+        name="About"
+        component={AboutScreen}
+        options={{drawerIcon: aboutIcon}}
       />
     </AppDrawer.Navigator>
   );

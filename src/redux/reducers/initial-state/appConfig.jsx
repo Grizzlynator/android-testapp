@@ -1,5 +1,5 @@
-import configDao from '../../../database/local-storage/configDao';
 import _ from 'lodash';
+import configDao from '../../../database/local-storage/ConfigDao';
 
 export const DEFAULT_CONFIG = {
   signedIn: false,
