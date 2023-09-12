@@ -1,0 +1,46 @@
+{
+	// "javascript.implicitProjectConfig.checkJs": true,
+  "bracket-pair-colorizer-2.forceUniqueOpeningColor": false,
+  "files.eol": "\n",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": false,
+  "editor.fontWeight": 350,
+  "editor.lineHeight": 20,
+  "editor.fontSize": 14,
+  "editor.scrollbar.verticalScrollbarSize": 10,  
+  "editor.scrollbar.horizontalScrollbarSize": 10,
+  "terminal.integrated.fontSize": 16,
+  "window.zoomLevel": -0.6,
+  //  New settings
+  "editor.glyphMargin": false,
+  "editor.lineDecorationsWidth": 0,
+  "editor.snippetSuggestions": "top",
+  "[javascript]": {
+    "editor.formatOnSave": false,
+  },
+  "[html]": {
+    "editor.formatOnSave": false,
+  },
+  "[json]": {
+    "editor.formatOnSave": false,
+  },
+  "[handlebars]": {
+    "editor.formatOnSave": false,
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.activeBorder": "#0076d1",
+    "activityBar.activeBackground": "#8b8b8b7f",
+    "activityBar.inactiveForeground": "#8b8b8b",
+    "activityBar.foreground": "#0076d1",
+    "statusBar.background" : "#0076d1",
+    "statusBar.foreground": "#ffffff",
+    "statusBar.noFolderBackground" : "#212121",
+    "statusBar.debuggingBackground": "#263238",
+    "window.dialogStyle": "Custom",
+    "editorLineNumber.foreground": "#aeaeae7f",
+    "tab.activeBorder": "#0076d1",
+    "terminal.foreground" : "#8e8e8e",
+  },
+}
