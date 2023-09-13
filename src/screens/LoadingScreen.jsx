@@ -12,8 +12,8 @@ function LoadingScreen(props) {
 
   useEffect(() => {
     const {signedIn, navigation} = props;
-    console.log('signedIn: ', signedIn);
-    console.log('navigation: ', navigation);
+    // console.log('signedIn: ', signedIn);
+    // console.log('navigation: ', navigation);
     navigation.navigate('App');
   });
 

@@ -1,27 +1,20 @@
-import {
-  CommonActions,
-  StackActions,
-  createNavigationContainerRef,
-} from '@react-navigation/native';
+import {createNavigationContainerRef} from '@react-navigation/native';
 
 const navigationRef = createNavigationContainerRef();
 
 let _navigator;
 
 function setTopLevelNavigator(navigatorRef) {
-  console.log('navigatorRef: ', navigatorRef);
+  console.log('setTopLevelNavigator navigatorRef: ', navigatorRef);
   _navigator = navigatorRef;
 }
 
 function navigate(routeName, params) {
+  console.log('routeName: ', routeName);
+  console.log('navigationRef.isReady(): ', navigationRef.isReady());
+
   if (navigationRef.isReady()) {
-    _navigator.dispatch(StackActions.popToTop());
-    _navigator.dispatch(
-      CommonActions.navigate({
-        routeName,
-        params,
-      }),
-    );
+    navigationRef.navigate(routeName, params);
   }
 }
 

@@ -8,16 +8,16 @@ import NavigationService from '../services/NavigationService';
 
 const appActions = [
   {
-    text: 'Filter Settings',
-    // icon: require('./images/ic_accessibility_white.png'),
-    name: 'bt_filtersettings',
-    position: 2,
+    text: 'About',
+    // icon: require('./images/ic_language_white.png'),
+    name: 'About',
+    position: 1,
   },
   {
-    text: 'Schedule',
-    // icon: require('./images/ic_language_white.png'),
-    name: 'bt_schedule',
-    position: 1,
+    text: 'News',
+    // icon: require('./images/ic_accessibility_white.png'),
+    name: 'News',
+    position: 2,
   },
 ];
 
@@ -25,7 +25,9 @@ const FloatingNavigationButtons = () => {
   const actionsToRender = appActions;
 
   const handleOnRegularButtonPress = props => {
-    NavigationService.navigate(props.name);
+    console.log('handleOnRegularButtonPress props: ', props);
+    // NavigationService.navigate(props.name);
+    NavigationService.navigate(props);
   };
 
   const renderNavigationButtonInRegularMode = () => {
@@ -52,7 +54,8 @@ const FloatingNavigationButtons = () => {
         visible={true}
         showBackground={true}
         onPressItemClose={true}
-        onPressItem={props => onPressItem(props)}
+        // onPressItem={props => onPressItem(props)}
+        onPressItem={props => handleOnRegularButtonPress(props)}
       />
     );
   };

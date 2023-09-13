@@ -16,7 +16,7 @@ const settingsIcon = ({tintColor}) => (
 
 const AppDrawer = createDrawerNavigator();
 
-const AppStack = () => {
+export default function AppStack() {
   return (
     <AppDrawer.Navigator
       // initialRouteName="NewsScreen"
@@ -34,5 +34,3 @@ const AppStack = () => {
     </AppDrawer.Navigator>
   );
 };
-
-export default AppStack;

@@ -1,21 +1,17 @@
 import React from 'react';
-import {
-  NavigationContainer,
-  createNavigationContainerRef,
-} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import LoadingScreen from '../screens/LoadingScreen';
 import AppStack from './AppStack';
-import RootPageOptions from './configs/RootPageOptions';
-
-const navigationRef = createNavigationContainerRef();
+import NavigationService from '../services/NavigationService';
+// import RootPageOptions from './configs/RootPageOptions';
 
 const RootStack = createNativeStackNavigator();
 
 export default function AppContainer(params) {
   return (
-    <NavigationContainer ref={navigationRef}>
+    <NavigationContainer ref={NavigationService.navigationRef}>
       <RootStack.Navigator>
         <RootStack.Screen
           name="Load"
