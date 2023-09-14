@@ -4,7 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
-const Stack = createStackNavigator();
+const NewsStack = createStackNavigator();
 
 function NewsNavigator() {
   return <></>;

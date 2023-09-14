@@ -7,17 +7,18 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import NavigationService from '../services/NavigationService';
 
 const appActions = [
-  {
-    text: 'About',
-    // icon: require('./images/ic_language_white.png'),
-    name: 'About',
-    position: 1,
-  },
+
   {
     text: 'News',
     // icon: require('./images/ic_accessibility_white.png'),
     name: 'News',
-    position: 2,
+    position: 1,
+  },
+  {
+    text: 'Settings',
+    // icon: require('./images/ic_language_white.png'),
+    name: 'Settings',
+    position: 1,
   },
 ];
 
