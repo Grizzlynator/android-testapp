@@ -6,7 +6,7 @@ const headerButton = navigation => (
 );
 
 const MainPageOptions = ({navigation}) => {
-  return {headerLeft: headerButton(navigation)};
+  return {headerLeft: () => headerButton(navigation)};
 };
 
 export default MainPageOptions;

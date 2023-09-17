@@ -29,27 +29,6 @@ UIManager.setLayoutAnimationEnabledExperimental &&
 
 function NewsScreen(props) {
   const {news, loading, error} = props;
-  if (error) {
-    return renderErrorMessage(error);
-  }
-
-  useEffect(() => {
-    console.log('--NewsScreen is mounted--');
-    // console.log('NewsScreen useEffect props: ', props);
-    fetchTsiNews(props);
-  }, []);
-  // const {hasUnreadMessages, navigation} = props;
-  // TODO uncomment
-  // if (!hasUnreadMessages) navigation.navigate('Schedule');
-
-  useSelector(state => state.appConfig.language);
-
-  const fetchTsiNews = () => {
-    const {language, fetchNews: componentNewsFetch} = props;
-    console.log('NewsScreen language: ', language);
-    console.log('NewsScreen componentNewsFetch: ', componentNewsFetch);
-    componentNewsFetch(language || 'en');
-  };
 
   const renderErrorMessage = message => {
     const explanatory = i18n.t('pressToRetry');
@@ -63,8 +42,11 @@ function NewsScreen(props) {
     );
   };
 
-  const onRefresh = () => {
-    fetchTsiNews();
+  const fetchTsiNews = () => {
+    const {language, fetchNews: componentNewsFetch} = props;
+    console.log('NewsScreen language: ', language);
+    console.log('NewsScreen componentNewsFetch: ', componentNewsFetch);
+    componentNewsFetch(language || 'en');
   };
 
   const renderOnListEmpty = () => {
@@ -117,6 +99,24 @@ function NewsScreen(props) {
       </GmailStyleSwipeableRow>
     );
   };
+  const onRefresh = () => {
+    fetchTsiNews();
+  };
+
+  useEffect(() => {
+    console.log('--NewsScreen is mounted--');
+    // console.log('NewsScreen useEffect props: ', props);
+    fetchTsiNews(props);
+  }, []);
+  // const {hasUnreadMessages, navigation} = props;
+  // TODO uncomment
+  // if (!hasUnreadMessages) navigation.navigate('Schedule');
+
+  useSelector(state => state.appConfig.language);
+
+  if (error) {
+    return renderErrorMessage(error);
+  }
 
   return (
     <FlatList

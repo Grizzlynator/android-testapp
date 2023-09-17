@@ -7,49 +7,44 @@ import Icon from 'react-native-vector-icons/Feather';
 import i18n from '../../translations';
 import LanguagesScreen from '../../screens/settings/LanguagesScreen';
 import SettingsScreen from '../../screens/settings/SettingsScreen';
+import ScheduleFilterScreen from '../../screens/settings/ScheduleFilterScreen';
+import {HeaderBackButton} from '../../components/HeaderBackButton';
+import MainPageOptions from '../configs/MainPageOptions';
 
-// const LanguageScreenOptions = ({ navigation }) => {
-//   return {
-//     header: <HeaderBackButton navigation={navigation} />,
-//   };
-// };
+const LanguageScreenOptions = ({navigation}) => {
+  return {
+    title: i18n.t('settings'),
+    headerLeft: () => <HeaderBackButton navigation={navigation} />,
+    headerLeftContainerStyle: {paddingLeft: 10},
+  };
+};
 
 const SettingsStack = createStackNavigator();
 
-const SettingsNavigator = (props) => {
+const SettingsNavigator = props => {
   useSelector(state => state.appConfig);
   console.log("name={i18n.t('language')}->", i18n.t('language'));
   return (
     <SettingsStack.Navigator
-      screenOptions={({route, navigation}) => ({
-        // headerShown: false,
-        gestureEnabled: true,
-      })}>
+      initialRouteName={'SettingsScreen'}
+      screenOptions={MainPageOptions}>
       <SettingsStack.Screen
         name="SettingsScreen"
         component={SettingsScreen}
-        options={({navigation}) => ({
-          title: i18n.t('settings'),
-          headerLeft: () => (
-            <TouchableOpacity onPress={() => navigation.navigate(NewsDetails)}>
-              <Icon
-                name="menu"
-                size={20}
-                onPress={() => navigation.openDrawer()}
-              />
-            </TouchableOpacity>
-          ),
-          headerLeftContainerStyle: {paddingLeft: 10},
-        })}
+        options={navigation => MainPageOptions(navigation)}
       />
       <SettingsStack.Screen
         name="LanguagesScreen"
         component={LanguagesScreen}
+        options={navigation => LanguageScreenOptions(navigation)}
+      />
+      <SettingsStack.Screen
+        name="ScheduleFilterScreen"
+        component={ScheduleFilterScreen}
         options={({navigation}) => ({
-          title: i18n.t('language'),
+          title: i18n.t('scheduleFilter'),
         })}
       />
-      {/* <SettingsStack.Screen name="ScheduleFilterScreen" /> */}
     </SettingsStack.Navigator>
   );
 };

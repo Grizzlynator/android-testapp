@@ -10,7 +10,7 @@ import {
 } from './types';
 
 import {contain} from '../../helpers/ArrayHelpers';
-import fastNavigationDAO from '../../database/local-storage/fastNavigationDAO';
+import fastNavigationDao from '../../database/local-storage/fastNavigationDao';
 
 export const hideNavigationButton = () => {
   return {
@@ -41,7 +41,7 @@ export const saveNavigationActions = () => {
   return (dispatch, state) => {
     const {actions: navActions} = state().navigationButton;
     dispatch({type: NAV_BUTTON_CONFIG_SELECTOR_SAVE});
-    const data = fastNavigationDAO
+    const data = fastNavigationDao
       .overwrite(navActions)
       .then(() => onSaveNavigationActionSuccess(dispatch))
       .catch(() => onSaveNavigationActionFail(dispatch));

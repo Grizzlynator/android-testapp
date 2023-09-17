@@ -11,7 +11,7 @@ function SettingsScreen(props) {
   const {scheduleFilter, fastNavigation, language} = settingListProps;
   return (
     <View style={{flex: 1}}>
-      <NavigationButtonConfigSelector />
+      {/*<NavigationButtonConfigSelector />*/}
       <ScrollView style={{height: '100%'}}>
         <Partition height={25} color={'#e7e7f3'} />
         <ListItem
@@ -22,7 +22,7 @@ function SettingsScreen(props) {
         <ListItem
           name={i18n.t('scheduleFilter')}
           props={scheduleFilter}
-          // onPress={this.onScheduleFilterPress.bind(this)}
+          onPress={() => onScheduleFilterItemPress(navigation)}
         />
         {/*<ListItem*/}
         {/*  name={i18n.t('fastNavigation')}*/}
@@ -37,6 +37,11 @@ function SettingsScreen(props) {
 const onLanguageItemPress = navigation => {
   // const {navigate} = props.navigation;
   navigation.navigate('LanguagesScreen');
+};
+
+const onScheduleFilterItemPress = navigation => {
+  // const {navigate} = props.navigation;
+  navigation.navigate('ScheduleFilterScreen');
 };
 
 const settingListProps = {
@@ -62,7 +67,7 @@ const mapStateToProps = state => {
   const {appConfig, settingsScreen} = state;
   return {
     language: appConfig.language,
-    // options: settingsScreen.optionIsOpen,
+    options: settingsScreen.optionIsOpen,
   };
 };
 

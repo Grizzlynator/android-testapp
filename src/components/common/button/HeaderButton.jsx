@@ -12,7 +12,7 @@ export const HeaderButton = ({
   return (
     <TouchableOpacity onPress={onPress}>
       <View style={[styles.container, containerStyle]}>
-        <Icon />
+        <Icon name={featherIconName} size={iconSize} />
       </View>
     </TouchableOpacity>
   );

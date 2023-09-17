@@ -5,7 +5,7 @@ import {HeaderButton} from './common';
 export default function HeaderDrawerMenuButton(props) {
   return (
     <HeaderButton
-      iconSize={28}
+      iconSize={22}
       containerStyle={styles.buttonContainer}
       onPress={() => props.onPress()}
       featherIconName={'menu'}

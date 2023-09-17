@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Feather';
@@ -12,9 +12,7 @@ import SettingsNavigator from './child-stacks/SettingsStack';
 const newsIcon = () => <Icon name="rss" size={21} color="#144774" />;
 const contactsIcon = () => <Icon name="users" size={21} />;
 const aboutIcon = () => <Icon name="info" size={22} />;
-const settingsIcon = ({tintColor}) => (
-  <Icon name="settings" size={22} color={tintColor} />
-);
+const settingsIcon = () => <Icon name="settings" size={22} />;
 
 const AppDrawer = createDrawerNavigator();
 
@@ -48,8 +46,8 @@ function AppStack(props) {
         name="About"
         component={AboutScreen}
         options={{
-          title: i18n.t('about'),
           drawerIcon: aboutIcon,
+          title: i18n.t('about'),
         }}
       />
     </AppDrawer.Navigator>
