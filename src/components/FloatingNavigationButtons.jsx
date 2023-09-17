@@ -1,29 +1,39 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 import _ from 'lodash';
-import {FloatingAction} from 'react-native-floating-action';
+import FloatingAction from './floating-action/src/FloatingAction';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
+import i18n from '../translations';
 import NavigationService from '../services/NavigationService';
 
-const appActions = [
-
-  {
-    text: 'News',
-    // icon: require('./images/ic_accessibility_white.png'),
-    name: 'News',
-    position: 1,
-  },
-  {
-    text: 'Settings',
-    // icon: require('./images/ic_language_white.png'),
-    name: 'Settings',
-    position: 1,
-  },
-];
-
 const FloatingNavigationButtons = () => {
-  const actionsToRender = appActions;
+  useSelector(store => store.appConfig.language);
+  const actionsToRender = [
+    {
+      position: 1,
+      text: i18n.t('news'),
+      icon: <Icon name="newspaper" size={21} color={'white'} />,
+      name: 'News',
+      buttonSize: 45,
+      textStyle: {fontSize: 16},
+    },{
+      position: 2,
+      text: i18n.t('schedule'),
+      icon: <Icon name="calendar-month" size={21} color={'white'} />,
+      name: 'Schedule',
+      buttonSize: 45,
+      textStyle: {fontSize: 16},
+    },
+    {
+      position: 3,
+      text: i18n.t('settings'),
+      icon: <Icon name="settings" size={21} color={'white'} />,
+      name: 'Settings',
+      buttonSize: 45,
+      textStyle: {fontSize: 16},
+    },
+  ];
 
   const handleOnRegularButtonPress = props => {
     console.log('handleOnRegularButtonPress props: ', props);
@@ -47,6 +57,7 @@ const FloatingNavigationButtons = () => {
       <FloatingAction
         // floatingIcon={<Icon name="explore" size={58} color="white" />}
         color={'#143e69'}
+        position={'right'}
         isOpen={true}
         ref={ref => (this.floatingAction = ref)}
         buttonSize={60}
@@ -55,6 +66,8 @@ const FloatingNavigationButtons = () => {
         visible={true}
         showBackground={true}
         onPressItemClose={true}
+        iconHeight={20}
+        iconWidth={20}
         // onPressItem={props => onPressItem(props)}
         onPressItem={props => handleOnRegularButtonPress(props)}
       />
@@ -63,4 +76,5 @@ const FloatingNavigationButtons = () => {
   return renderNavigationButtonInRegularMode();
 };
 
-export default connect()(FloatingNavigationButtons);
+// export default connect()(FloatingNavigationButtons);
+export default FloatingNavigationButtons;

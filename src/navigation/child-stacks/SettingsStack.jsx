@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {connect, useSelector} from 'react-redux';
 import {TouchableOpacity} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Feather';
@@ -16,7 +16,9 @@ import SettingsScreen from '../../screens/settings/SettingsScreen';
 
 const SettingsStack = createStackNavigator();
 
-const SettingsNavigator = () => {
+const SettingsNavigator = (props) => {
+  useSelector(state => state.appConfig);
+  console.log("name={i18n.t('language')}->", i18n.t('language'));
   return (
     <SettingsStack.Navigator
       screenOptions={({route, navigation}) => ({
@@ -52,4 +54,10 @@ const SettingsNavigator = () => {
   );
 };
 
+// const mapStateToProps = state => {
+//   const {appConfig} = state;
+//   return {
+//     language: appConfig.language,
+//   };
+// };
 export default connect()(SettingsNavigator);

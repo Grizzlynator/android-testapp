@@ -1,13 +1,13 @@
 import React from 'react';
 import {View, StyleSheet, FlatList, Text} from 'react-native';
-import {connect} from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
 import Flag from 'react-native-flags';
 import {Icon} from 'react-native-elements';
 import _ from 'lodash';
 
 import {CheckListItem, Partition} from '../../components/common';
 import {withCapitalLetter} from '../../helpers/StringHelpers';
-// import {setAppLanguage} from '../../action/data/AppConfigActions';
+import {setAppLanguage} from '../../redux/actions/data/AppConfigActions';
 import i18n from '../../translations';
 // import HeaderTitle from '../../component/HeaderTitle';
 
@@ -61,29 +61,8 @@ const checkBoxProps = {
   iconColor: 'red',
 };
 
-const renderItem = ({item}) => {
-  const {name, props, ISO6391} = item;
-  const {lang} = props;
-  const checked = _.isEqual(ISO6391, lang);
-  return (
-    <CheckListItem
-      checked={checked}
-      name={withCapitalLetter(i18n.t(name))}
-      props={props}
-      checkProps={checkBoxProps}
-      onPress={() => this.onLanguageClick(ISO6391)}
-    />
-    // <Text>{withCapitalLetter(i18n.t(name))}</Text>
-  );
-};
-
-const Item = ({title}) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
-
 const LanguageScreen = props => {
+  // console.log('LanguageScreen. lang: ', props);
   const languagesList = [english, latvian, russian];
   return (
     <View>
@@ -91,12 +70,41 @@ const LanguageScreen = props => {
       <FlatList
         keyExtractor={keyExtractor}
         data={languagesList}
-        renderItem={renderItem}
-        // renderItem={({item}) => <Item title={item.name} />}
+        renderItem={({item}) =>
+          renderItem({
+            ...item,
+            onLanguageClick: props.setLanguage,
+            lang: props.lang,
+          })
+        }
         style={styles.flatList}
       />
     </View>
   );
 };
 
-export default connect()(LanguageScreen);
+const renderItem = (item) => {
+  // console.log('item->', item);
+  const {name, onLanguageClick, ISO6391, lang} = item;
+  const checked = _.isEqual(ISO6391, lang);
+  return (
+    <CheckListItem
+      checked={checked}
+      name={withCapitalLetter(i18n.t(name))}
+      props={item.props}
+      checkProps={checkBoxProps}
+      onPress={() => onLanguageClick(ISO6391)}
+    />
+  );
+};
+
+const mapStateToProps = state => {
+  const {language} = state.appConfig;
+  return {lang: language};
+};
+
+const actions = {
+  setLanguage: setAppLanguage,
+};
+
+export default connect(mapStateToProps, actions)(LanguageScreen);

@@ -9,7 +9,6 @@ import NavigationButtonConfigSelector from '../../components/NavigationButtonCon
 function SettingsScreen(props) {
   const {navigation} = props;
   const {scheduleFilter, fastNavigation, language} = settingListProps;
-
   return (
     <View style={{flex: 1}}>
       <NavigationButtonConfigSelector />
@@ -25,17 +24,15 @@ function SettingsScreen(props) {
           props={scheduleFilter}
           // onPress={this.onScheduleFilterPress.bind(this)}
         />
-        <ListItem
-          name={i18n.t('fastNavigation')}
-          props={fastNavigation}
-          // onPress={this.onFastNavigationItemPress.bind(this)}
-        />
+        {/*<ListItem*/}
+        {/*  name={i18n.t('fastNavigation')}*/}
+        {/*  props={fastNavigation}*/}
+        {/*  // onPress={this.onFastNavigationItemPress.bind(this)}*/}
+        {/*/>*/}
       </ScrollView>
     </View>
   );
 }
-
-export default connect()(SettingsScreen);
 
 const onLanguageItemPress = navigation => {
   // const {navigate} = props.navigation;
@@ -60,3 +57,18 @@ const settingListProps = {
     icon: {name: 'fingerprint'},
   },
 };
+
+const mapStateToProps = state => {
+  const {appConfig, settingsScreen} = state;
+  return {
+    language: appConfig.language,
+    // options: settingsScreen.optionIsOpen,
+  };
+};
+
+// const action = {
+//   changeNavigationButtonMode,
+//   navigationButtonToggle
+// };
+
+export default connect(mapStateToProps)(SettingsScreen);

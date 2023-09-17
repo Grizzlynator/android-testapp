@@ -28,19 +28,29 @@ function AppStack(props) {
       // initialRouteName="NewsScreen"
       screenOptions={AppDraweOptions}>
       <AppDrawer.Screen
-        name={i18n.t('news')}
+        name="News"
         component={NewsNavigator}
-        options={{drawerIcon: newsIcon}}
+        options={{
+          drawerIcon: newsIcon,
+          title: i18n.t('news'),
+        }}
       />
       <AppDrawer.Screen
-        name={i18n.t('settings')}
+        name="Settings"
         component={SettingsNavigator}
-        options={{drawerIcon: settingsIcon, headerShown: false}}
+        options={{
+          drawerIcon: settingsIcon,
+          headerShown: false,
+          title: i18n.t('settings'),
+        }}
       />
       <AppDrawer.Screen
-        name={i18n.t('about')}
+        name="About"
         component={AboutScreen}
-        options={{drawerIcon: aboutIcon}}
+        options={{
+          title: i18n.t('about'),
+          drawerIcon: aboutIcon,
+        }}
       />
     </AppDrawer.Navigator>
   );
