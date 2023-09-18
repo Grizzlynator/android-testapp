@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react';
 import {connect, useSelector, useDispatch} from 'react-redux';
 import {StyleSheet, Text, View} from 'react-native';
+import {showNavigationButton} from '../redux/actions/NavigationButtonActions';
+import {requestUserPermission} from '../services/notifierService';
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -12,10 +14,26 @@ function LoadingScreen(props) {
 
   useEffect(() => {
     const {signedIn, navigation} = props;
-    // console.log('signedIn: ', signedIn);
-    // console.log('navigation: ', navigation);
-    navigation.navigate('App');
+    const pageToOpen = signedIn ? onSignedIn() : onSignedOut();
+    console.log('-----------props: ', props);
+    console.log('-----------signedIn: ', signedIn);
+    console.log('-----------navigation: ', navigation);
+    // navigation.navigate('App');
+    navigation.navigate(pageToOpen);
   });
+
+  const onSignedIn = () => {
+    const {showNavigationButton, userStatus} = props;
+    if (userStatus !== 'guest') {
+      requestUserPermission();
+    }
+    showNavigationButton();
+    return 'App';
+  };
+
+  const onSignedOut = () => {
+    return 'Auth';
+  };
 
   return (
     <View style={styles.container}>
@@ -25,7 +43,19 @@ function LoadingScreen(props) {
   );
 }
 
-export default connect()(LoadingScreen);
+const mapStateToProps = state => {
+  const {appConfig, profile} = state;
+  return {
+    userStatus: profile.status,
+    signedIn: appConfig.signedIn,
+  };
+};
+
+const actions = {
+  showNavigationButton,
+};
+
+export default connect(mapStateToProps, actions)(LoadingScreen);
 
 const styles = StyleSheet.create({
   titleText: {fontSize: 18},

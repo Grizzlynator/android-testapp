@@ -19,10 +19,18 @@ const LanguageScreenOptions = ({navigation}) => {
   };
 };
 
+const ScheduleFilterScreenOptions = ({navigation}) => {
+  return {
+    title: i18n.t('scheduleFilter'),
+    headerLeft: () => <HeaderBackButton navigation={navigation} />,
+    headerLeftContainerStyle: {paddingLeft: 10},
+  };
+};
+
 const SettingsStack = createStackNavigator();
 
 const SettingsNavigator = props => {
-  useSelector(state => state.appConfig);
+  useSelector(state => state.appConfig.language);
   console.log("name={i18n.t('language')}->", i18n.t('language'));
   return (
     <SettingsStack.Navigator
@@ -31,7 +39,7 @@ const SettingsNavigator = props => {
       <SettingsStack.Screen
         name="SettingsScreen"
         component={SettingsScreen}
-        options={navigation => MainPageOptions(navigation)}
+        options={navigation => MainPageOptions(navigation, i18n.t('settings'))}
       />
       <SettingsStack.Screen
         name="LanguagesScreen"
@@ -41,9 +49,7 @@ const SettingsNavigator = props => {
       <SettingsStack.Screen
         name="ScheduleFilterScreen"
         component={ScheduleFilterScreen}
-        options={({navigation}) => ({
-          title: i18n.t('scheduleFilter'),
-        })}
+        options={navigation => ScheduleFilterScreenOptions(navigation)}
       />
     </SettingsStack.Navigator>
   );

@@ -1,14 +1,26 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
+import {connect, useSelector} from 'react-redux';
 import _ from 'lodash';
 import FloatingAction from './floating-action/src/FloatingAction';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import i18n from '../translations';
 import NavigationService from '../services/NavigationService';
+import {showSelector} from '../redux/actions/NavigationButtonSelectorActions';
+import {
+  changeNavigationButtonMode,
+  navigationButtonUpdateActions,
+  saveNavigationActions,
+} from '../redux/actions/NavigationButtonActions';
 
-const FloatingNavigationButtons = () => {
-  useSelector(store => store.appConfig.language);
+const FloatingNavigationButtons = props => {
+  // useSelector(store => store.appConfig.language);
+  const {toggle, isVisible, mode} = useSelector(
+    state => state.navigationButtonConfig,
+  );
+  const {language} = useSelector(state => state.appConfig);
+  console.log('FloatingNavigationButtons useSelector', isVisible);
+
   const actionsToRender = [
     {
       position: 1,
@@ -17,7 +29,8 @@ const FloatingNavigationButtons = () => {
       name: 'News',
       buttonSize: 45,
       textStyle: {fontSize: 16},
-    },{
+    },
+    {
       position: 2,
       text: i18n.t('schedule'),
       icon: <Icon name="calendar-month" size={21} color={'white'} />,
@@ -62,8 +75,8 @@ const FloatingNavigationButtons = () => {
         ref={ref => (this.floatingAction = ref)}
         buttonSize={60}
         actions={actionsToRender}
-        // visible={isVisible}
-        visible={true}
+        visible={isVisible}
+        // visible={true}
         showBackground={true}
         onPressItemClose={true}
         iconHeight={20}
@@ -73,8 +86,31 @@ const FloatingNavigationButtons = () => {
       />
     );
   };
+
   return renderNavigationButtonInRegularMode();
 };
 
-// export default connect()(FloatingNavigationButtons);
-export default FloatingNavigationButtons;
+const mapStateToProps = state => {
+  const {navigationButton} = state;
+  const {language} = state.appConfig;
+
+  return {
+    language: language,
+    toggle: navigationButton.toggle,
+    // actions: navigationButton.actions,
+    isVisible: navigationButton.isVisible,
+    mode: navigationButton.mode,
+  };
+};
+
+const actions = {
+  saveNavigationActions,
+  navigationButtonUpdateActions,
+  changeNavigationButtonMode,
+  showSelector,
+};
+
+// export default connect(mapStateToProps, actions)(FloatingNavigationButtons);
+export default connect(null, actions)(FloatingNavigationButtons);
+
+// export default FloatingNavigationButtons;

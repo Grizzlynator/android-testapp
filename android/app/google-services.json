@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "614144189046",
+    "firebase_url": "https://tsi-schedule-notificatio-1224c.firebaseio.com",
+    "project_id": "tsi-schedule-notificatio-1224c",
+    "storage_bucket": "tsi-schedule-notificatio-1224c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:614144189046:android:5c32e4130b3936e65f7557",
+        "android_client_info": {
+          "package_name": "tsi.phonegap.schedule"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "614144189046-86bs8i4snpjvvls3bfued3pgsfpk1s05.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMzpBvfwgANH6EzTXYE4eoUoOoIoYEO2U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "614144189046-86bs8i4snpjvvls3bfued3pgsfpk1s05.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "614144189046-cnda4ksvdkvmssu9lo43f5csp0ai7v0t.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "tsi.phonegap.schedule"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

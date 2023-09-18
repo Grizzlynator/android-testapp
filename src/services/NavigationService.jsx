@@ -1,4 +1,7 @@
-import {createNavigationContainerRef} from '@react-navigation/native';
+import {
+  createNavigationContainerRef,
+  StackActions,
+} from '@react-navigation/native';
 
 const navigationRef = createNavigationContainerRef();
 
@@ -14,6 +17,7 @@ function navigate(routeName, params) {
   console.log('navigationRef.isReady(): ', navigationRef.isReady());
 
   if (navigationRef.isReady()) {
+    navigationRef.dispatch(StackActions.popToTop());
     navigationRef.navigate(routeName, params);
   }
 }

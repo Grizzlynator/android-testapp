@@ -8,6 +8,7 @@ import AppDraweOptions from './configs/AppDrawerOptions';
 import NewsNavigator from './child-stacks/NewsStack';
 import AboutScreen from '../screens/AboutScreen';
 import SettingsNavigator from './child-stacks/SettingsStack';
+import DrawerNavigation from '../components/DrawerNavigation';
 
 const newsIcon = () => <Icon name="rss" size={21} color="#144774" />;
 const contactsIcon = () => <Icon name="users" size={21} />;
@@ -16,14 +17,15 @@ const settingsIcon = () => <Icon name="settings" size={22} />;
 
 const AppDrawer = createDrawerNavigator();
 
-function AppStack(props) {
-  const {language} = props;
-  console.log('AppStack language: ', language);
-  console.log('AppStack news name: ', i18n.t('news'));
-  console.log('AppStack about name: ', i18n.t('about'));
+function AppStack() {
+  // const {language} = props;
+  // console.log('AppStack language: ', language);
+  // console.log('AppStack news name: ', i18n.t('news'));
+  // console.log('AppStack about name: ', i18n.t('about'));
   return (
     <AppDrawer.Navigator
       // initialRouteName="NewsScreen"
+      drawerContent={props => <DrawerNavigation {...props} />}
       screenOptions={AppDraweOptions}>
       <AppDrawer.Screen
         name="News"
@@ -46,6 +48,7 @@ function AppStack(props) {
         name="About"
         component={AboutScreen}
         options={{
+          headerShown: true,
           drawerIcon: aboutIcon,
           title: i18n.t('about'),
         }}
@@ -54,6 +57,12 @@ function AppStack(props) {
   );
 }
 
-export default connect(state => ({language: state.appConfig.language}))(
-  AppStack,
-);
+// export default connect(state => ({language: state.appConfig.language}))(
+//   AppStack,
+// );
+export default connect(
+  state => ({language: state.appConfig}),
+  dispatch => ({
+    dispatch: dispatch,
+  }),
+)(AppStack);

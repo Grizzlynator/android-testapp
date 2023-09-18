@@ -10,7 +10,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-clipboard/clipboard": "^1.11.2",
     "@react-native-community/async-storage": "^1.12.1",
+    "@react-native-community/netinfo": "^9.4.1",
+    "@react-native-community/push-notification-ios": "^1.11.0",
+    "@react-native-firebase/app": "^18.4.0",
+    "@react-native-firebase/messaging": "^18.4.0",
     "@react-native-masked-view/masked-view": "^0.2.9",
     "@react-navigation/drawer": "^6.6.3",
     "@react-navigation/native": "^6.1.7",
@@ -27,7 +32,9 @@
     "react-native-device-info": "^10.9.0",
     "react-native-elements": "^3.4.3",
     "react-native-flags": "^1.0.0",
+    "react-native-flash-message": "^0.4.2",
     "react-native-gesture-handler": "^2.12.1",
+    "react-native-material-menu": "^2.0.0",
     "react-native-modal-selector": "^2.1.2",
     "react-native-reanimated": "^3.5.1",
     "react-native-rss-parser": "^1.5.1",
