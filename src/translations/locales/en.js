@@ -23,7 +23,7 @@ export default {
   save: 'Save',
   all: 'All',
   favorites: 'Favorites',
-  loading: 'Загрузка...',
+  loading: 'Loading...',
   noEventsFount: 'No events found.',
 
   networkRequestFailed: 'Network request failed',

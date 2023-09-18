@@ -2,28 +2,30 @@
 import {
   CommonActions,
   StackActions,
-  createNavigationContainerRef,
+  // createNavigationContainerRef,
 } from '@react-navigation/native';
 
-const navigationRef = createNavigationContainerRef();
+// const navigationRef = createNavigationContainerRef();
 
 let _navigator;
 
 function setTopLevelNavigator(navigatorRef) {
-  console.log('navigatorRef: ', navigatorRef);
+  // console.log('navigatorRef: ', navigatorRef);
   _navigator = navigatorRef;
 }
 
 function navigate(routeName, params) {
   console.log('----NavigationService navigate----');
-  if (navigationRef.isReady()) {
+  console.log('_navigator.isReady(): ', _navigator.isReady());
+  if (_navigator.isReady()) {
     _navigator.dispatch(StackActions.popToTop());
-    _navigator.dispatch(
-      CommonActions.navigate({
-        name: routeName,
-        params,
-      }),
-    );
+    // _navigator.dispatch(
+    //   CommonActions.navigate({
+    //     name: routeName,
+    //     params,
+    //   }),
+    // );
+    _navigator.navigate('App', {screen: routeName});
   }
 }
 
@@ -32,5 +34,5 @@ function navigate(routeName, params) {
 export default {
   navigate,
   setTopLevelNavigator,
-  navigationRef,
+  // navigationRef,
 };

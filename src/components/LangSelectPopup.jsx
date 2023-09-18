@@ -1,8 +1,8 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
-import {Menu, MenuItem} from 'react-native-material-menu';
 import {connect} from 'react-redux';
 import {Button} from 'react-native-elements';
+import {StyleSheet, Text, View} from 'react-native';
+import {Menu, MenuItem} from 'react-native-material-menu';
 
 import {setAppLanguage} from '../redux/actions/data/AppConfigActions';
 
@@ -44,7 +44,7 @@ class LangSelectPopup extends React.PureComponent {
     return (
       <Menu
         ref={this.setMenuRef}
-        button={this.icon}
+        anchor={this.icon}
         style={styles.popupContainer}>
         <MenuItem
           textStyle={styles.textStyle}

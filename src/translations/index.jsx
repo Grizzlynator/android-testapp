@@ -7,7 +7,7 @@ import lv from './locales/lv';
 const translations = {en: en, lv: lv, ru: ru};
 
 const i18n = new I18n(translations);
-i18n.defaultLocale = 'ru';
-i18n.enableFallback = 'true';
+i18n.defaultLocale = 'en';
+i18n.enableFallback = true;
 
 export default i18n;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, ImageBackground, Keyboard} from 'react-native';
+import {StyleSheet, View, ImageBackground, Keyboard, Text} from 'react-native';
 import {connect} from 'react-redux';
 import {Button} from 'react-native-elements';
 
@@ -43,7 +43,7 @@ class SignInScreen extends React.Component {
           resizeMethod={'scale'}
           resizeMode={'cover'}
           style={styles.headerBackground}>
-          <View style={{}}>
+          <View>
             <LangSelectPopup />
           </View>
         </ImageBackground>

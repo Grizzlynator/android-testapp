@@ -8,6 +8,7 @@ import NewsScreen from '../../screens/news/NewsScreen';
 import i18n from '../../translations';
 import MainPageOptions from '../configs/MainPageOptions';
 const NewsStack = createStackNavigator();
+import NewsDetailsScreen from '../../screens/news/NewsDetailsScreen';
 
 function NewsNavigator() {
   const language = useSelector(store => store.appConfig.language);
@@ -26,6 +27,13 @@ function NewsNavigator() {
         name={'NewsList'}
         component={NewsScreen}
         options={navigation => MainPageOptions(navigation, i18n.t('news'))}
+      />
+      <NewsStack.Screen
+        name={'NewsDetail'}
+        component={NewsDetailsScreen}
+        options={{
+          title: i18n.t('news'),
+        }}
       />
     </NewsStack.Navigator>
   );

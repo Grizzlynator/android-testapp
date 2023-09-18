@@ -9,6 +9,11 @@ import reduxInitialState from './redux/reducers/initial-state/';
 import AppContainer from './navigation/RootStack';
 import FloatingNavigationButtons from './components/FloatingNavigationButtons';
 import {MessageWindow} from './components/common';
+import InternalAlerts from './components/InternalAlerts';
+import KeyboardListener from './listener/KeyboardListener';
+import InternetAccessListener from './listener/InternetAccessListener';
+import {cleanStorageIfNewVersion} from './services/AppService';
+import {changeLanguage} from './workers/LocaleService';
 
 export default function App(props) {
   const [isReady, setIsReady] = useState(false);
@@ -37,15 +42,18 @@ export default function App(props) {
       <SafeAreaView style={styles.mainSreenStyle}>
         <AppContainer />
         <FloatingNavigationButtons />
+        <KeyboardListener />
+        <InternetAccessListener />
+        <InternalAlerts />
       </SafeAreaView>
     </Provider>
   );
 
   const appInit = async () => {
-    // await cleanStorageIfNewVersion();
+    await cleanStorageIfNewVersion();
     const appIinitialState = await reduxInitialState();
     const {language} = appIinitialState.appConfig;
-    // changeLanguage(language);
+    changeLanguage(language);
     setIsReady(true);
     setInitialState(appIinitialState);
   };

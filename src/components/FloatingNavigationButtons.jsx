@@ -5,7 +5,7 @@ import FloatingAction from './floating-action/src/FloatingAction';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import i18n from '../translations';
-import NavigationService from '../services/NavigationService';
+import NavigationService from '../workers/NavigationService';
 import {showSelector} from '../redux/actions/NavigationButtonSelectorActions';
 import {
   changeNavigationButtonMode,
@@ -16,10 +16,9 @@ import {
 const FloatingNavigationButtons = props => {
   // useSelector(store => store.appConfig.language);
   const {toggle, isVisible, mode} = useSelector(
-    state => state.navigationButtonConfig,
+    state => state.navigationButton,
   );
   const {language} = useSelector(state => state.appConfig);
-  console.log('FloatingNavigationButtons useSelector', isVisible);
 
   const actionsToRender = [
     {

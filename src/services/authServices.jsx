@@ -8,7 +8,7 @@ import {authentication} from '../api/authServerAPI';
 import {GUEST_PROFILE} from '../redux/reducers/initial-state/profile';
 
 /**
- * Sign in in app as authorized user.
+ * Signin in app as authorized user.
  * @param loginName
  * @param password
  * @returns {Promise<ProfileDTO>}
@@ -32,7 +32,7 @@ const onAuthFailed = async err => {
 };
 
 /**
- * Sign in in application as guest.
+ * Signin in application as guest.
  * @returns {Promise<ProfileDTO>}
  */
 

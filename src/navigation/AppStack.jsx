@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import {connect, useSelector} from 'react-redux';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -9,6 +9,8 @@ import NewsNavigator from './child-stacks/NewsStack';
 import AboutScreen from '../screens/AboutScreen';
 import SettingsNavigator from './child-stacks/SettingsStack';
 import DrawerNavigation from '../components/DrawerNavigation';
+import MainPageOptions from './configs/MainPageOptions';
+import AboutNavigator from './child-stacks/AboutStack';
 
 const newsIcon = () => <Icon name="rss" size={21} color="#144774" />;
 const contactsIcon = () => <Icon name="users" size={21} />;
@@ -18,8 +20,8 @@ const settingsIcon = () => <Icon name="settings" size={22} />;
 const AppDrawer = createDrawerNavigator();
 
 function AppStack() {
-  // const {language} = props;
-  // console.log('AppStack language: ', language);
+  const {language} = useSelector(state => state.appConfig);
+  console.log('AppStack language: ', language);
   // console.log('AppStack news name: ', i18n.t('news'));
   // console.log('AppStack about name: ', i18n.t('about'));
   return (
@@ -46,9 +48,9 @@ function AppStack() {
       />
       <AppDrawer.Screen
         name="About"
-        component={AboutScreen}
+        component={AboutNavigator}
         options={{
-          headerShown: true,
+          headerShown: false,
           drawerIcon: aboutIcon,
           title: i18n.t('about'),
         }}

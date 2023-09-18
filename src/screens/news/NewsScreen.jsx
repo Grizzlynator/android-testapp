@@ -30,6 +30,11 @@ UIManager.setLayoutAnimationEnabledExperimental &&
 function NewsScreen(props) {
   const {news, loading, error} = props;
 
+  const onMoreDetailsButtonPress = link => {
+    const {navigate} = props.navigation;
+    navigate('NewsDetail', {link});
+  };
+
   const renderErrorMessage = message => {
     const explanatory = i18n.t('pressToRetry');
     return (
@@ -44,8 +49,8 @@ function NewsScreen(props) {
 
   const fetchTsiNews = () => {
     const {language, fetchNews: componentNewsFetch} = props;
-    console.log('NewsScreen language: ', language);
-    console.log('NewsScreen componentNewsFetch: ', componentNewsFetch);
+    // console.log('NewsScreen language: ', language);
+    // console.log('NewsScreen componentNewsFetch: ', componentNewsFetch);
     componentNewsFetch(language || 'en');
   };
 
@@ -79,7 +84,7 @@ function NewsScreen(props) {
       >
         <Card containerStyle={styles.container}>
           <TouchableOpacity
-            // onPress={() => onMoreDetailsButtonPress(item.link)}
+            onPress={() => onMoreDetailsButtonPress(item.link)}
             style={{flexDirection: 'row'}}>
             <SafeAreaView style={{flex: 1}}>
               <View style={{flexDirection: 'column', flex: 9}}>
