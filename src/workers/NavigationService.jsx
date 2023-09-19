@@ -15,9 +15,11 @@ function setTopLevelNavigator(navigatorRef) {
 }
 
 function navigate(routeName, params) {
-  console.log('----NavigationService navigate----');
-  console.log('_navigator.isReady(): ', _navigator.isReady());
-  if (_navigator.isReady()) {
+  // console.log('----NavigationService navigate----');
+  // console.log('_navigator.isReady(): ', _navigator.isReady());
+  const isReady = _navigator.isReady();
+  // if (_navigator.isReady()) {
+  if (isReady) {
     _navigator.dispatch(StackActions.popToTop());
     // _navigator.dispatch(
     //   CommonActions.navigate({

@@ -33,7 +33,9 @@ class MaterialInput extends Component {
     const resultCount = Platform.OS === 'ios' ? 5 : 10;
     let dataToShow = query(data, '\\b' + text, resultCount);
     if (text === '') {
-      dataToShow = {};
+      // TODO ??????
+      // dataToShow = {};
+      dataToShow = [];
     }
     this.setState({dataToShow});
   };
@@ -46,11 +48,20 @@ class MaterialInput extends Component {
           <View
             style={[styles.autocompleteWrapper, {zIndex: this.props.zIndex}]}>
             <Autocomplete
-              renderItem={props => this.renderListItem(props)}
+              flatListProps={{
+                keyExtractor: (item, index) => item,
+                // keyExtractor: (_, idx) => idx.toString(),
+                renderItem: item => this.renderListItem(item),
+                // renderItem: ({item}) => (
+                //   <TouchableOpacity onPress={() => this.onItemClick(item)}>
+                //     <Text style={{padding: 8}}>{item}</Text>
+                //   </TouchableOpacity>
+                // ),
+              }}
               renderTextInput={this.renderTextInput}
               listContainerStyle={styles.listItemContainer}
               inputContainerStyle={styles.inputContainer}
-              keyExtractor={(item, index) => item}
+              containerStyle={styles.autocompleteContainer}
               data={this.state.dataToShow}
             />
           </View>

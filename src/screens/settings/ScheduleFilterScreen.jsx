@@ -45,6 +45,8 @@ class ScheduleFilterScreen extends Component {
   }
 
   onFilterFormInputUpdate = (prop, value) => {
+    // console.log('ScheduleFilter prop: ', prop);
+    // console.log('ScheduleFilter value: ', value);
     const {scheduleFilterFormInputsUpdate} = this.props;
     scheduleFilterFormInputsUpdate({[prop]: value});
   };

@@ -59,8 +59,8 @@ class ScheduleViewer extends React.Component {
       console.log('ScheduleView onFocusCall');
       this.fetchSchedule();
     });
-    console.log('------ ScheduleView filter: ', this.props.filter);
-    console.log('------ ScheduleView props before if: ', this.props.schedule);
+    // console.log('------ ScheduleView filter: ', this.props.filter);
+    // console.log('------ ScheduleView props before if: ', this.props.schedule);
     // if (_.isEqual(schedule, [])) {
     //   this.fetchSchedule();
     // }
