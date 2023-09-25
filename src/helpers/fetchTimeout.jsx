@@ -1,5 +1,3 @@
-// import RequestTimeoutException from '../exceptions/RequestTimeoutException';
-
 export default (url, option, timeout = 7000) => {
   return Promise.race([
     fetch(url, option),

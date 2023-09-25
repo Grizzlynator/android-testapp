@@ -48,7 +48,7 @@ const FloatingNavigationButtons = props => {
   ];
 
   const handleOnRegularButtonPress = props => {
-    console.log('handleOnRegularButtonPress props: ', props);
+    // console.log('handleOnRegularButtonPress props: ', props);
     // NavigationService.navigate(props.name);
     NavigationService.navigate(props);
   };

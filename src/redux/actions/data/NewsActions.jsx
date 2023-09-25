@@ -16,7 +16,7 @@ import newsDao from '../../../database/local-storage/newsDao';
  */
 
 export const fetchNews = language => {
-  console.log('-NewsAction fetchNes-');
+  // console.log('-NewsAction fetchNes-');
   return (dispatch, state) => {
     const {markedAsReadIds: markedIds} = state().news;
     dispatch({type: NEWS_FETCH});

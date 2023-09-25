@@ -41,11 +41,11 @@ class AllContactsScreen extends React.Component {
   // );
 
   componentDidMount = () => {
-    console.log('AllContactsScreen componentDidMount');
-    console.log('AllContactsScreen componentDidMount props.navigation -> ', this.props.navigation);
+    // console.log('AllContactsScreen componentDidMount');
+    // console.log('AllContactsScreen componentDidMount props.navigation -> ', this.props.navigation);
     this.onFocusCall = this.props.navigation.addListener('focus', () => {
       const {contacts, fetchContacts, language} = this.props;
-      console.log('componentDidMount language: ', language);
+      // console.log('componentDidMount language: ', language);
       if (_.isEqual(contacts, [])) {
         fetchContacts(language);
       }

@@ -11,7 +11,7 @@ import SettingsScreenReducer from './screen/SettingsScreenReducer';
 import NavigationButtonReducer from './screen/NavigationButonReducer';
 import NavigationButtonConfigReducer from './screen/NavigationButtonActionSelectorReducer';
 import AllContactsScreenReducer from './screen/AllContactsScreenReducer';
-// import NotificationHistoryListReducer from './NotificationHistoryListReducer';
+import NotificationHistoryListReducer from './NotificationHistoryListReducer';
 
 import ScheduleFilterReducer from './data/ScheduleFilterReducer';
 import ScheduleFilterScreenReducer from './screen/ScheduleFilterFormReducer';
@@ -36,7 +36,7 @@ const RootReducer = combineReducers({
   schedule: ScheduleReducer,
   settingsScreen: SettingsScreenReducer,
   notifier: NotifierReducer,
-  // notificationHistory: NotificationHistoryListReducer,
+  notificationHistory: NotificationHistoryListReducer,
 });
 
 export default RootReducer;

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {connect, useSelector} from 'react-redux';
 import {
   TouchableOpacity,
@@ -12,30 +12,27 @@ import {
   SafeAreaView,
 } from 'react-native';
 import {Card} from 'react-native-elements';
-
-// import {withNavigationFocus} from 'react-navigation';
+import messaging from '@react-native-firebase/messaging';
 
 import {fetchNews, markAsRead} from '../../redux/actions/data/NewsActions';
 import {OpacityMessageWindow} from '../../components/common';
-// import HeaderTitle from '../../component/HeaderTitle';
 import i18n from '../../translations';
-//
-// import messaging from '@react-native-firebase/messaging';
 import GmailStyleSwipeableRow from '../../components/swipeble/GmailStyleSwipeableRow';
-import _ from 'lodash';
 
 UIManager.setLayoutAnimationEnabledExperimental &&
   UIManager.setLayoutAnimationEnabledExperimental(true);
 
 function NewsScreen(props) {
   const {news, loading, error} = props;
+  const {language} = useSelector(state => state.appConfig);
+  const {fetchNews: componentNewsFetch} = props;
 
   const onMoreDetailsButtonPress = link => {
     const {navigate} = props.navigation;
     navigate('NewsDetail', {link});
   };
 
-  const renderErrorMessage = message => {
+  const renderErrorMessage = () => {
     const explanatory = i18n.t('pressToRetry');
     return (
       <OpacityMessageWindow
@@ -47,12 +44,15 @@ function NewsScreen(props) {
     );
   };
 
-  const fetchTsiNews = () => {
-    const {language, fetchNews: componentNewsFetch} = props;
-    // console.log('NewsScreen language: ', language);
-    // console.log('NewsScreen componentNewsFetch: ', componentNewsFetch);
+  // const fetchTsiNews = () => {
+  //   const {fetchNews: componentNewsFetch} = props;
+  //   // console.log('NewsScreen language: ', language);
+  //   // console.log('NewsScreen componentNewsFetch: ', componentNewsFetch);
+  //   componentNewsFetch(language || 'en');
+  // };
+  const fetchTsiNews = useCallback(() => {
     componentNewsFetch(language || 'en');
-  };
+  }, [componentNewsFetch, language]);
 
   const renderOnListEmpty = () => {
     return (
@@ -109,15 +109,16 @@ function NewsScreen(props) {
   };
 
   useEffect(() => {
-    console.log('--NewsScreen is mounted--');
+    // console.log('--NewsScreen is mounted--');
     // console.log('NewsScreen useEffect props: ', props);
-    fetchTsiNews(props);
-  }, []);
-  // const {hasUnreadMessages, navigation} = props;
-  // TODO uncomment
-  // if (!hasUnreadMessages) navigation.navigate('Schedule');
+    fetchTsiNews();
+  }, [fetchTsiNews, language]);
 
-  useSelector(state => state.appConfig.language);
+  const {hasUnreadMessages, navigation} = props;
+  // TODO uncomment
+  if (!hasUnreadMessages) {
+    navigation.navigate('Schedule');
+  }
 
   if (error) {
     return renderErrorMessage(error);
@@ -142,7 +143,7 @@ const mapStateToProps = state => {
     news: news.news,
     loading: news.loading,
     error: news.error,
-    language: appConfig.language,
+    // language: appConfig.language,
     markedAsReadIds: news.markedAsReadIds,
     hasUnreadMessages: news.hasUnreadMessages,
   };

@@ -42,7 +42,7 @@ class ScheduleViewer extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log('SCHEDULE VIEWER - UPDATED <<<<-------');
+    // console.log('SCHEDULE VIEWER - UPDATED <<<<-------');
     if (filterWasChanged(this.props, prevProps)) {
       this.fetchSchedule();
     }
@@ -65,7 +65,7 @@ class ScheduleViewer extends React.Component {
     //   this.fetchSchedule();
     // }
     this.fetchSchedule();
-    console.log('------ ScheduleView props: ', this.props.schedule);
+    // console.log('------ ScheduleView props: ', this.props.schedule);
   }
 
   render = () => {

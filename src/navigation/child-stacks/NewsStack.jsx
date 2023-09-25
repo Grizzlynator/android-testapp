@@ -12,7 +12,7 @@ import NewsDetailsScreen from '../../screens/news/NewsDetailsScreen';
 
 function NewsNavigator() {
   const language = useSelector(store => store.appConfig.language);
-  console.log('new title: ', i18n.t('news'));
+  // console.log('new title: ', i18n.t('news'));
   return (
     <NewsStack.Navigator
       screenOptions={({route, navigation}) => ({

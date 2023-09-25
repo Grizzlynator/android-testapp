@@ -122,7 +122,7 @@ class ScheduleScreen extends Component {
       <WarningWindow
         message={i18n.t('filterNotDefined')}
         explanatory={i18n.t('pressToDefinedFilter')}
-        onPress={() => navigation.navigate('ScheduleFilter')}
+        onPress={() => navigation.navigate('ScheduleFilterScreen')}
       />
     );
   };
