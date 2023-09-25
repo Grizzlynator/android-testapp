@@ -80,9 +80,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.testapp"
+    namespace "com.tsi.schedule"
     defaultConfig {
-//         applicationId "com.testapp"
+//         applicationId "com.tsi.schedule"
         applicationId "tsi.phonegap.schedule"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
