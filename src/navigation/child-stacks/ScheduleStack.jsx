@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-// import {createStackNavigator} from 'react-navigation-stack';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import MainPageOptions from '../configs/MainPageOptions';
@@ -14,6 +13,7 @@ const ScheduleNavigator = () => {
     <ScheduleStack.Navigator
       screenOptions={{
         headerMode: 'screen',
+        headerTitleAlign: 'center',
         cardStyle: {backgroundColor: 'white'},
       }}>
       <ScheduleStack.Screen

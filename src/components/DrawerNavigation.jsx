@@ -21,7 +21,6 @@ import {
 
 import {fetchNews, unmarkAsReadAll} from '../redux/actions/data/NewsActions';
 import {signOut} from '../redux/actions/AuthActions';
-// import { DrawerNavigatorItems } from 'react-navigation-drawer';
 import {
   hideNavigationButton,
   showNavigationButton,
@@ -82,8 +81,7 @@ class DrawerNavigation extends React.Component {
       getDrawerStatusFromState(navigation.getState()) === 'open' ? true : false;
 
     isDrawerOpen ? hideNavigationButton() : showNavigationButton();
-    // TODO uncomment
-    // if (!signedIn) navigation.navigate('Auth');
+    if (!signedIn) navigation.navigate('Auth');
   }
 
   render() {
@@ -157,7 +155,7 @@ class DrawerNavigation extends React.Component {
           <Icon name="log-out" size={21} color="black" />
         </View>
         <View>
-          <Text>{i18n.t('signOut')}</Text>
+          <Text style={styles.signoutText}>{i18n.t('signOut')}</Text>
         </View>
       </TouchableOpacity>
     );
@@ -245,6 +243,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
     paddingVertical: 12,
     flexDirection: 'row',
+    color: 'black',
   },
   logoImgContainer: {
     marginTop: 15,
@@ -258,6 +257,9 @@ const styles = StyleSheet.create({
     width: null,
     height: null,
     resizeMode: 'contain',
+  },
+  signoutText: {
+    color: 'black',
   },
 });
 

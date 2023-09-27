@@ -7,7 +7,7 @@ import {
 } from '../../actions/types';
 
 const INITIAL_STATE = {
-  isVisible: true,
+  isVisible: false,
   toggle: false,
   mode: 'regular',
   actions: [
@@ -17,7 +17,7 @@ const INITIAL_STATE = {
   ],
 };
 
-export default (state = {}, action) => {
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case NAVIGATION_BUTTON_HIDE:
       return {

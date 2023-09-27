@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect, useSelector} from 'react-redux';
-import _ from 'lodash';
 import FloatingAction from './floating-action/src/FloatingAction';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 

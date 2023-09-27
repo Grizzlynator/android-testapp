@@ -28,6 +28,7 @@ const modifyDescription = description => {
   desc = desc.replace(/(\r\n|\n|\r)/gm, ' ');
   desc = desc.replace(/&nbsp;/g, ' ');
   desc = desc.replace('&#8220;', '"').replace('&#8221;', '"');
+  desc = desc.replace('&#171;', '"').replace('&#187;', '"');
   return TextAbstract(desc, 200);
 };
 

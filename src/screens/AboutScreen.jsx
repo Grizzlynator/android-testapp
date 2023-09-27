@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     lineHeight: 24,
     fontSize: 16,
+    color: 'black',
   },
   appVersionText: {
     textAlign: 'center',

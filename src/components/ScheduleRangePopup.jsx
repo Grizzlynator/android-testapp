@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {StyleSheet} from 'react-native';
-import Menu, {MenuItem} from 'react-native-material-menu';
+import {Menu, MenuItem} from 'react-native-material-menu';
 import {connect} from 'react-redux';
 // import {withNavigationFocus} from 'react-navigation';
 
@@ -41,7 +41,7 @@ class ScheduleRangePopup extends React.PureComponent {
     return (
       <Menu
         ref={this.setMenuRef}
-        button={this.icon}
+        anchor={this.icon}
         style={styles.popupContainer}>
         <MenuItem onPress={() => this.onRangeSelect('day')}>
           {i18n.t('day')}
@@ -61,13 +61,13 @@ const actions = {
   switchPage,
 };
 
-// export default connect(null, actions)(withNavigationFocus(ScheduleRangePopup));
 export default connect(null, actions)(ScheduleRangePopup);
 
 const styles = StyleSheet.create({
   popupContainer: {
     marginTop: 35,
     shadowColor: '#000',
+    color: 'black',
     shadowOffset: {
       width: 0,
       height: 3,

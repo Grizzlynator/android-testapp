@@ -95,7 +95,7 @@ class MaterialInput extends Component {
   renderListItem = props => {
     return (
       <TouchableOpacity onPress={() => this.onItemClick(props.item)}>
-        <Text style={{padding: 8}}>{props.item}</Text>
+        <Text style={inputStyles.itemText}>{props.item}</Text>
       </TouchableOpacity>
     );
   };
@@ -139,5 +139,9 @@ const inputStyles = StyleSheet.create({
   },
   input: {
     fontSize: 15,
+  },
+  itemText: {
+    padding: 8,
+    color: 'black',
   },
 });

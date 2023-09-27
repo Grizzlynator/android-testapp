@@ -12,20 +12,18 @@ import SettingsNavigator from './child-stacks/SettingsStack';
 import MainPageOptions from './configs/MainPageOptions';
 import AboutNavigator from './child-stacks/AboutStack';
 import ScheduleNavigator from './child-stacks/ScheduleStack';
+import {showNavigationButton} from "../redux/actions/NavigationButtonActions";
 
-const newsIcon = () => <Icon name="rss" size={21} color="#144774" />;
-const scheduleIcon = () => <Icon name="calendar" size={22} />;
-const contactsIcon = () => <Icon name="users" size={21} />;
-const aboutIcon = () => <Icon name="info" size={22} />;
-const settingsIcon = () => <Icon name="settings" size={22} />;
+const newsIcon = () => <Icon name="rss" size={22} color="#144774" />;
+const scheduleIcon = () => <Icon name="calendar" size={22} color="#144774" />;
+const contactsIcon = () => <Icon name="users" size={22} color="#144774" />;
+const aboutIcon = () => <Icon name="info" size={22} color="#144774" />;
+const settingsIcon = () => <Icon name="settings" size={22} color="#144774" />;
 
 const AppDrawer = createDrawerNavigator();
 
-function AppStack() {
+function AppStack(props) {
   const {language} = useSelector(state => state.appConfig);
-  // console.log('AppStack language: ', language);
-  // console.log('AppStack news name: ', i18n.t('news'));
-  // console.log('AppStack about name: ', i18n.t('about'));
   return (
     <AppDrawer.Navigator
       // initialRouteName="NewsScreen"

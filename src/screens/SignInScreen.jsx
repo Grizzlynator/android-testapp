@@ -1,6 +1,6 @@
 import React from 'react';
-import {StyleSheet, View, ImageBackground, Keyboard, Text} from 'react-native';
-import {connect} from 'react-redux';
+import {StyleSheet, View, ImageBackground, Keyboard} from 'react-native';
+import {connect, useDispatch} from 'react-redux';
 import {Button} from 'react-native-elements';
 
 import LoginInput from '../components/common/input/LoginInput';
@@ -9,6 +9,10 @@ import {updateLoginFormInput} from '../redux/actions/LoginFormActions';
 import {signIn, signInAsGuest} from '../redux/actions/AuthActions';
 import i18n from '../translations';
 import LangSelectPopup from '../components/LangSelectPopup';
+import {
+  showNavigationButton,
+  hideNavigationButton,
+} from '../redux/actions/NavigationButtonActions';
 
 class SignInScreen extends React.Component {
   static navigationOptions = {
@@ -17,8 +21,9 @@ class SignInScreen extends React.Component {
   };
 
   componentDidUpdate = () => {
-    const {signedIn, navigation} = this.props;
+    const {signedIn, navigation, showNavigationButton} = this.props;
     if (signedIn) {
+      showNavigationButton();
       navigation.navigate('Load');
     }
   };
@@ -36,6 +41,8 @@ class SignInScreen extends React.Component {
   };
 
   render = () => {
+    // const {hideNavigationButton} = this.props;
+    // hideNavigationButton();
     return (
       <View style={{flex: 1}}>
         <ImageBackground
@@ -138,6 +145,8 @@ const actions = {
   signIn,
   signInAsGuest,
   updateLoginFormInput,
+  showNavigationButton,
+  hideNavigationButton,
 };
 
 export default connect(mapStateToProps, actions)(SignInScreen);

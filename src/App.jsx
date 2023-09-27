@@ -89,7 +89,7 @@ export default function App(props) {
         <KeyboardListener />
         <InternetAccessListener />
         <InternalAlerts />
-        {/*<NotificationsController />*/}
+        <NotificationsController />
       </SafeAreaView>
     </Provider>
   );

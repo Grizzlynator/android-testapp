@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {View, StyleSheet, Platform, Keyboard} from 'react-native';
 import {Button} from 'react-native-elements';
@@ -19,7 +19,7 @@ import {
 import NavigationService from '../../workers/NavigationService';
 import i18n from '../../translations';
 
-class ScheduleFilterScreen extends Component {
+class ScheduleFilterScreen extends React.Component {
   static navigationOptions = ({}) => {
     return {headerTitle: <HeaderTitle title={'scheduleFilter'} />};
   };
@@ -27,7 +27,7 @@ class ScheduleFilterScreen extends Component {
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (!prevProps.filterSaved && this.props.filterSaved) {
       // TODO remove comment
-      // NavigationService.navigate('Schedule');
+      NavigationService.navigate('ScheduleScreen');
     }
   }
 

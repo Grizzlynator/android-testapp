@@ -109,13 +109,10 @@ function NewsScreen(props) {
   };
 
   useEffect(() => {
-    // console.log('--NewsScreen is mounted--');
-    // console.log('NewsScreen useEffect props: ', props);
     fetchTsiNews();
   }, [fetchTsiNews, language]);
 
   const {hasUnreadMessages, navigation} = props;
-  // TODO uncomment
   if (!hasUnreadMessages) {
     navigation.navigate('Schedule');
   }
@@ -198,6 +195,7 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     marginTop: 5,
     textAlign: 'justify',
+    color: 'black',
   },
   dateContainer: {
     marginTop: 7,

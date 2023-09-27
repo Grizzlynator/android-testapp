@@ -1,9 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 import {connect} from 'react-redux';
 import {withNavigationFocus} from '@react-navigation/compat';
-
-// import {withNavigationFocus} from 'react-navigation';
 
 import {LoadingWindow} from '../components/common';
 import WarningWindow from '../components/WarningWindow';
@@ -18,13 +16,11 @@ import i18n from '../translations';
 import ScheduleViewer from '../components/ScheduleViewer';
 import SideButton from '../components/common/button/SideButton';
 
-class ScheduleScreen extends Component {
-  static navigationOptions = ({navigation}) => {
-    return {
-      headerRight: <ScheduleRangePopup />,
-      headerTitle: <HeaderTitle title={'schedule'} />,
-    };
-  };
+class ScheduleScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    // console.log('navigation: ', this.props.navigation);
+  }
 
   onLeftButtonPress = () => {
     const {shift, range} = this.props.page;
@@ -52,6 +48,11 @@ class ScheduleScreen extends Component {
     //   'ScheduleScreen componentDidMount props.navigation => ',
     //   this.props.navigation,
     // );
+    const {navigation} = this.props;
+    navigation.setOptions({
+      headerRight: () => <ScheduleRangePopup />,
+    });
+
     this.onFocusCall = this.props.navigation.addListener('focus', () => {
       const {itemsError, fetchScheduleItems} = this.props;
       if (itemsError) {
@@ -122,7 +123,10 @@ class ScheduleScreen extends Component {
       <WarningWindow
         message={i18n.t('filterNotDefined')}
         explanatory={i18n.t('pressToDefinedFilter')}
-        onPress={() => navigation.navigate('ScheduleFilterScreen')}
+        // onPress={() => navigation.navigate('ScheduleFilterScreen')}
+        onPress={() =>
+          navigation.navigate('Settings', {screen: 'ScheduleFilterScreen'})
+        }
       />
     );
   };
@@ -154,11 +158,11 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  actions,
-)(withNavigationFocus(ScheduleScreen));
-// export default connect(mapStateToProps, actions)(ScheduleScreen);
+// export default connect(
+//   mapStateToProps,
+//   actions,
+// )(withNavigationFocus(ScheduleScreen));
+export default connect(mapStateToProps, actions)(ScheduleScreen);
 
 const styles = {
   errorMessage: {

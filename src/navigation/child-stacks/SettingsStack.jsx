@@ -31,7 +31,6 @@ const SettingsStack = createStackNavigator();
 
 const SettingsNavigator = props => {
   useSelector(state => state.appConfig.language);
-  // console.log("name={i18n.t('language')}->", i18n.t('language'));
   return (
     <SettingsStack.Navigator
       initialRouteName={'SettingsScreen'}

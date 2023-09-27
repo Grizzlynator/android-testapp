@@ -8,7 +8,8 @@ const headerButton = navigation => (
 const MainPageOptions = ({navigation}, title) => {
   return {
     title: title,
-    headerLeft: () => headerButton(navigation)
+    headerTitleAlign: 'center',
+    headerLeft: () => headerButton(navigation),
   };
 };
 

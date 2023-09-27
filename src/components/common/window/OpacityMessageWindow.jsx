@@ -8,7 +8,7 @@ export const OpacityMessageWindow = props => {
       style={[styles.container, containerStyle]}
       onPress={onPress}>
       <Text style={styles.text}>{message}</Text>
-      <Text style={{textAlign: 'center'}}> {explanatory}</Text>
+      <Text style={styles.text}> {explanatory}</Text>
     </TouchableOpacity>
   );
 };
@@ -24,5 +24,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
     fontSize: 17,
+    color: 'black',
   },
 });

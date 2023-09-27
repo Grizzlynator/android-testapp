@@ -3,27 +3,7 @@ import {connect, useSelector} from 'react-redux';
 import {createStackNavigator} from '@react-navigation/stack';
 import AboutScreen from '../../screens/AboutScreen';
 import MainPageOptions from '../configs/MainPageOptions';
-import HeaderTitle from '../../components/HeaderTitle';
-import i18n from "../../translations";
-const styles = {};
-
-// const AboutNavigator = createStackNavigator(
-//   {
-//     About: {
-//       screen: AboutScreen,
-//       navigationOptions: MainPageOptions,
-//     },
-//   },
-//   {
-//     headerLayoutPreset: 'center',
-//     cardStyle: {
-//       backgroundColor: 'white',
-//     },
-//     defaultNavigationOptions: {
-//       headerTitle: <HeaderTitle title={'about'} />,
-//     },
-//   },
-// );
+import i18n from '../../translations';
 
 const AboutStack = createStackNavigator();
 

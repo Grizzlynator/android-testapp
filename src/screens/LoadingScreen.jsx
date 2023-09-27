@@ -9,15 +9,9 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 function LoadingScreen(props) {
   const appstate = useSelector(state => state.appConfig);
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
     const {signedIn, navigation} = props;
     const pageToOpen = signedIn ? onSignedIn() : onSignedOut();
-    // console.log('-----------props: ', props);
-    // console.log('-----------signedIn: ', signedIn);
-    // console.log('-----------navigation: ', navigation);
-    // navigation.navigate('App');
     navigation.navigate(pageToOpen);
   });
 
